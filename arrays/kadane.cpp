@@ -25,3 +25,34 @@ int main()
 	cout<<maxsum;
 	return 0;
 }
+/*class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int cs = 0,maxsum = INT_MIN;
+        int flag=0;
+        for (int i=0;i<nums.size();i++)
+        {
+            if(nums[i]>0)
+            {
+                flag=1;
+                break;
+            }
+        }
+        if (flag == 0) return *max_element(nums.begin(),nums.end());
+        else
+        {
+            for(int i=0;i<nums.size();i++)
+            {
+                cs = cs + nums[i];
+                if(cs<0)
+                    cs=0;
+                maxsum = max(cs,maxsum);
+            }
+        }
+        return maxsum;
+    }
+};
+
+*** Logic for arrays with negative subarrays ***
+
+If array contains all negative nos , then the answer is the maximum element */
