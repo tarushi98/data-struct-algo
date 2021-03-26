@@ -43,13 +43,13 @@ int main()
 		for(int i=startrow;i<=endrow;i++)
 		{ cout<<a[i][endcol]<<" ";}
 		endcol--;
-		if(endcol>startcol)
+		if(endrow>=startrow)
 		{
 			for(int i=endcol;i>=startcol;i--)
 			{ cout<<a[endrow][i]<<" ";}
 			endrow--;
 		}
-		if(endrow>startrow)
+		if(endcol>=startcol)
 		{
 			for(int i=endrow;i>=startrow;i--)
 			{cout<<a[i][startcol]<<" ";}
