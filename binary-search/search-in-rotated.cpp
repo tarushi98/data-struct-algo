@@ -22,7 +22,7 @@ int chabbi_lele(int key, int a[] , int n)
 			if(a[mid]<=key and a[end]>=key)
 				start = mid+1;
 			else
-				start=mid-1;
+				end=mid-1;
 		}
 	}
 	
