@@ -76,6 +76,63 @@ void deleteHead(node *&head)
 	delete head;
 	head = tmp;
 }
+void deleteMid(node *&head , int pos)
+{
+ 	if(head == NULL)
+	{
+		cout<<"Linked List is Empty";
+		return;
+	}
+	else if(pos == 0)
+	{ deleteHead(head);}
+	node *tmp = head;
+	node *prev;
+	int ct = 0;
+	while(tmp!=NULL)
+	{	
+		if(ct == pos)
+		{
+			prev->next = tmp->next;
+			delete tmp;
+			break;
+		}
+		prev = tmp;	
+		tmp = tmp->next;
+		ct+=1;
+	}
+}	
+void deleteTail(node *&head)
+{
+	if(head == NULL)
+	{
+		cout<<"Linked List is Empty";
+		return;
+	}
+	node *tmp = head;
+	node *prev;
+	while(tmp->next != NULL)
+	{
+		prev = tmp;
+		tmp = tmp->next;
+	}
+	prev->next = NULL;
+	delete tmp;
+}
+void search(node *head , int key)
+{	int id;
+ 	while(head != NULL)
+	{
+		if(head->data == key)
+		{
+			cout<<"Found! present at index :"<<id<<endl;
+			return;
+		}
+		head = head->next;
+		id+=1;
+	}
+	cout<<"Not Found"<<endl;
+}
+	
 void display(node *head)
 {	cout<<"Generated Linked List is:"<<endl;
 	while(head != NULL)
@@ -101,5 +158,10 @@ int main()
  	display(head);
  	deleteHead(head);
  	display(head);
+ 	deleteMid(head,2);
+ 	display(head);
+ 	deleteTail(head);
+ 	display(head);
+ 	search(head,3);
  }
  	

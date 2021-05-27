@@ -11,7 +11,6 @@ class node{
 		next = NULL;
 	}
 };
-
 void insertAtHead(node *&head , int data)
 {
 	
@@ -25,51 +24,26 @@ void insertAtHead(node *&head , int data)
 	n->next = head;
 	head = n;
 }
-void insertInMiddle(node *&head , int data , int pos)
+void reverseList(node *&head)
 {
 	if(head == NULL)
 	{
-		if(pos == 1)
-		{	insertAtHead(head,data);
-			return;
-		}
-		
-		cout<<"Linked List Empty!";
-		return;
+		cout<<"Linked List is empty!"<<endl;
 	}
-	node *n = new node(data);
-	node *tmp = head;
-	int ct=0;
+	
+	node *tmp = head , *prev = NULL;
+	node *nextaddr;
 	while(tmp != NULL)
-	{	ct+=1;
-		if(ct == pos)
-		{	n->next = tmp->next;
-			tmp->next = n;
-			break;
-		}
-		tmp = tmp->next;
+	{
+		nextaddr = tmp->next;
+		tmp->next = prev;
+		prev = tmp;
+		tmp = nextaddr;
+		//cout<<"next in list:"<<tmp->data;
 	}
+	head = prev;
 }
 	
-void insertTail(node *&head , int data)
-{
-	if(head == NULL)
-	{
-			insertAtHead(head,data);
-			return;
-	}
-	
-	node *tmp = head;
-	while(tmp->next != NULL)
-	{
-		tmp =  tmp->next;
-	}
-	node *n = new node(data);
-	tmp->next = n;
-}
-			
-			
-		
 void display(node *head)
 {	cout<<"Generated Linked List is:"<<endl;
 	while(head != NULL)
@@ -79,7 +53,6 @@ void display(node *head)
 	}
 	cout<<"NULL"<<endl;
 }
-
 int main()
 {
  	node *head = NULL;
@@ -89,9 +62,8 @@ int main()
  	insertAtHead(head,0);
  	insertAtHead(head,6);
  	display(head);
- 	insertInMiddle(head,5,4);
+ 	reverseList(head);
  	display(head);
- 	insertTail(head,8);
- 	display(head);
- }
  	
+}
+
